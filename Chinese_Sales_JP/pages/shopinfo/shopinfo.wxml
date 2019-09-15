@@ -1,0 +1,41 @@
+<view class='info-top ui-m-30'>
+  <view class='align-center'>
+    <image class="user-image" src="{{userInfo.avatarUrl}}"></image>
+    <text class="user-nickName">{{userInfo.nickName}}</text>
+  </view>
+  <text class='localFrom'>距离您{{details.price}}km</text>
+</view>
+<view class='align-center'>
+  <text class='prix1'>￥{{details.prix}}</text>
+  <text class='prix2' wx:if="{{details.message2}}">包邮送</text>
+  <text class='prix2' wx:if="{{!details.message2}}">邮费{{details.youfei}}元</text>
+</view>
+<view class='title'>
+  <text>{{details.title}}</text>
+</view>
+<view class='local ui-m-30'>
+  <text>{{details.local1}} | {{details.local2}}</text>
+</view>
+<view class='line'></view>
+<view class='ui-mt-30 align-center'>
+  <view class='sign-img'></view>
+  <text class='sign-text'>商品详情</text>
+</view>
+<view class='ui-m-30'>
+  <view></view>
+  <view>
+    <text class="detail-text {{ellipsis?'ellipsis':'unellipsis'}}">{{details.detail}}</text>
+  </view>
+  <view wx:if="{{isEllipsis}}">
+    <text class="ellipsis-text" wx:if="{{ellipsis}}" bindtap='ellipsis'>全部显示 》</text>
+    <text class="ellipsis-text" wx:if="{{!ellipsis}}" bindtap='ellipsis'>收起《</text>
+  </view>
+</view>
+<view class='ui-m-30' wx:for="{{details.picture1}}">
+  <image class='picture1' src='{{item}}'></image>
+</view>
+<view class='display-row '>
+  <view class='ui-m-20' wx:for="{{details.picture2}}">
+    <image class='picture2' src='{{item}}'></image>
+  </view>
+</view>

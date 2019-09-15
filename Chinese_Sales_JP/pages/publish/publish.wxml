@@ -1,0 +1,86 @@
+<!--pages/publish/publish.wxml-->
+<view>
+  <view class="{{images.length>3 ? 'imageAddHright':''}}">
+    <view class="{{images.length>0 ? 'showImage':'showImage2'}}">
+      <view class="addButton addColor" wx:for="{{images}}" wx:key="{{index}}">
+        <!-- 图片缩略图  -->
+        <image class="addImage" src="{{item}}" data-idx="{{index}}" bindtap="handleImagePreview"></image>
+        <!-- 移除图片的按钮  -->
+        <!--<view class="addButtonText" data-index="{{index}}" bindtap="removeImage">删除</view>-->
+        <view class="delete" bindtap="removeImage" data-index="{{index}}">X</view>
+      </view>
+      <view class="addButton" wx:if="{{isShow}}">
+        <image class='addImage' src='../../img/addImage.png' bindtap="chooseImage" wx:if="{{images.length < 8}}" />
+      </view>
+    </view>
+  </view>
+  <view class="addButtonText" wx:if="{{images.length == 0}}">(最多只能上传8张图片，默认第一张为产品封面展示。)</view>
+  <view class="line-10"></view>
+  <view class="addDetail">
+    <view class="addDetail-space-between">
+      <input class="detailInput" type="text" maxlength="30" placeholder='填写主题或名称，如:"苹果手机"' placeholder-style="color:#CACACA;" placeholder-class="placeholder-style" value="{{title}}" bindinput="titleInput" hidden="{{keyShow}}"></input>
+      <text class="titleCount">{{titleCount}}</text>
+    </view>
+    <view class="line"></view>
+    <view style="margin-top: 25rpx;">
+      <textarea class="detailAreaInput" placeholder="在此描述你的具体需求或物品的细节：如品牌，规格，成色，出手原因，购买渠道，优缺点等" placeholder-style="color:#CACACA;" placeholder-class="placeholder-style" value="" hidden="{{keyShow}}"/>
+    </view>
+    <view class="addDetail-space-between">
+      <view class="addDetail-align-items">
+        <image class="localImage" src='../../img/local.png'></image>
+        <text>日本·东京</text>
+      </view>
+      <view class="addDetail-align-items">
+        <checkbox value="{{item.name}}" bindchange="checkboxChange" />
+        <text>全新宝贝</text>
+      </view>
+    </view>
+  </view>
+  <view class="line-10"></view>
+  <view class="addDetail-space-between">
+    <text style="margin-left: 20rpx;margin-bottom: 10rpx;">分类</text>
+    <text style="margin-right: 20rpx;margin-bottom: 10rpx;">手机  ></text>
+  </view>
+  <view class="line"></view>
+  <view class="addDetail-space-between" catchtap='showKeyboard'>
+    <text style="margin-left: 20rpx;margin-bottom: 10rpx;">价格</text>
+    <text style="margin-right: 20rpx;margin-bottom: 10rpx;">开价  ></text>
+  </view>
+</view>
+<view class=''>
+  <view class='keyboard {{keyShow&&"hind_box"}}'>
+    <view style='width:750rpx; height:820rpx; background:#CACACA;' catchtap='hindKeyboard'>
+      <text>123456</text>
+    </view>
+    <view class='input_view'>
+      <text class='title'>想卖出的价钱？</text>
+      <view class='input_box' bindtap='changeInputLocal1'>
+        <text class='input_label'>￥</text>
+        <text class='content'>{{content}}</text>
+        <view class='className' hidden="{{inputLocal==1 ? false:true}}"></view>
+      </view>
+      <view class='input_box_2' bindtap='changeInputLocal2'>
+        <view style="display: flex;">
+          <text class='input_label_2'>原价:</text>
+          <text class='content_2'>{{oldprice}}</text>
+          <view class='className_2' hidden="{{inputLocal==2 ? false:true}}"></view>
+        </view>
+      </view>
+      <view class='input_box_2' bindtap='changeInputLocal3'>
+        <view style="width:500rpx; display: flex;">
+          <text class='input_label_2'>运费:</text>
+          <text class='content_2'>{{yunfei}}</text>
+          <view class='className_2' hidden="{{inputLocal==3 ? false:true}}"></view>
+        </view>
+        <view style="display: flex; flex-direction: row;align-items:center;">
+          <view class='input_label_2'>包邮</view>
+          <checkbox value="{{item.name}}" />
+        </view>
+      </view>
+    </view>
+    <view class='complete'>完成</view>
+    <view class='key_box'>
+      <text class='keys {{index%3==0&&"border0"}} {{(index==9||index==11)&&"bg_color"}}' wx:for='{{KeyboardKeys}}' wx:key='this' catchtap='keyTap' data-keys='{{item}}'>{{item}}</text>
+    </view>
+  </view>
+</view>

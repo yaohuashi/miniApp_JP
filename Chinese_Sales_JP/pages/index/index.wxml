@@ -1,0 +1,151 @@
+<!--index.wxml-->
+<scroll-view class='scoll-backcolor'>
+
+  <!--搜索栏 -->
+  <view>
+    <button class='serachbutton' bindtap="searchClick">
+      <icon size='20' type="search" />
+      <text class='serachbutton-text'>搜索</text>
+    </button>
+  </view>
+  <!--轮播图-->
+  <view>
+    <swiper class='swiper_box' indicator-dots="{{indicatorDots}}" autoplay="{{autoplay}}" interval="{{interval}}" duration="{{duration}}" bindchange="swiperChange">
+      <block wx:for="{{imgUrls}}">
+        <swiper-item>
+          <view class='swiper-view'>
+            <image class='swiper-item-image' src="{{item}}" bindtap="" />
+          </view>
+        </swiper-item>
+      </block>
+    </swiper>
+  </view>
+
+  <!--导航-->
+  <view class="ui-flex">
+    <block wx:for="{{navs}}" >
+      <view class="nav-item" data-type="{{item.text}}" bindtap="searchInfoClick">
+        <image class="nav-img" src="{{item.icon}}" ></image>
+        <text class="nav-text">{{item.text}}</text>
+      </view>
+    </block>
+  </view>
+  <view class="ui-flex">
+    <block wx:for="{{navs2}}">
+      <view class="nav-item" data-type="{{item.text}}" bindtap="searchInfoClick">
+        <image class="nav-img" src="{{item.icon}}"></image>
+        <text class="nav-text">{{item.text}}</text>
+      </view>
+    </block>
+  </view>
+  <!--最近发布-->
+  <view class="separate">
+    <text class="ui-pl-20 small-text">最近发布</text>
+    <swiper class='swiper_box_meg' vertical="true" autoplay="{{autoplay}}" interval="{{interval}}" duration="{{duration}}" bindchange="swiperChange">
+      <block wx:for="{{messageInfo}}">
+        <swiper-item>
+          <view class='ui-flex ui-padding-10 swiper-view-meg'  bindtap="navigateToShopInfo">
+            <view>
+              <image class="cart-shop-img" src="{{item.megImg}}"></image>
+            </view>
+            <view class="ui-pl-10 ui-pr-10">
+              <view>
+                <text class="cart-shop-title">{{item.megTitle}}</text>
+              </view>
+              <view class="meg-detil-text">
+                <text class="cart-shop-select-info ui-pt-10">{{item.megDetil}}</text>
+              </view>
+              <view class="ui-flex ui-pt-10 ">
+                <image class="meg-item-image" src="{{userInfo.avatarUrl}}"></image>
+                <text class="cart-shop-price ui-pl-10">{{userInfo.nickName}} · {{item.userPlace}}</text>
+                <view class="ui-width-80 ui-pr-10 ui-flex ui-flex-end ">
+                  <view class="cart-count-option" data-index="{{index}}" bindtap="itemCountSub">-</view>
+                </view>
+              </view>
+            </view>
+          </view>
+        </swiper-item>
+      </block>
+    </swiper>
+
+  </view>
+  <!--导航条-->
+  <view class="navbar {{scrollTop>=559 ? 'fix-news' : ''}}">
+      <text wx:for="{{navbar}}" data-idx="{{index}}" class="item {{currentTab==index ? 'active' : ''}}" wx:key="unique" bindtap="navbarTap">{{item}}</text>
+  </view>
+
+
+  <!--<view id='header' class="navbar">
+    <text wx:for="{{navbar}}" data-idx="{{index}}" class="item {{currentTab==index ? 'active' : ''}}" wx:key="unique" bindtap="navbarTap">{{item}}     </text>
+  </view>-->
+
+
+  <view hidden="{{currentTab!==0}}" class='box'>
+    嘿嘿额呵呵呵呵呵呵呵呵
+  </view>
+
+
+  <view hidden="{{currentTab!==1}}" class='box'>
+    <block wx:for="{{messageInfo1}}">
+          <view class='ui-flex ui-padding-10 swiper-view-meg' bindtap="navigateToShopInfo">
+            <view>
+              <image class="cart-shop-img" src="{{arry[index] ? item.megImg: '../../img/icon-new-list2.png'}}"></image>
+            </view>
+            <view class="ui-pl-10 ui-pr-10">
+              <view>
+                <text class="cart-shop-title">{{item.megTitle}}</text>
+              </view>
+              <view class="meg-detil-text">
+                <text class="cart-shop-select-info ui-pt-10">{{item.megDetil}}</text>
+              </view>
+              <view class="ui-flex ui-pt-10 ">
+                <image class="meg-item-image" src="{{userInfo.avatarUrl}}"></image>
+                <text class="cart-shop-price ui-pl-10">{{userInfo.nickName}} · {{item.userPlace}}</text>
+                <view class="ui-width-80 ui-pr-10 ui-flex ui-flex-end ">
+                  <view class="cart-count-option" data-index="{{index}}" bindtap="itemCountSub">-</view>
+                </view>
+              </view>
+            </view>
+          </view>
+      </block>
+  </view>
+
+
+  <view hidden="{{currentTab!==2}}" class='box'>
+    哈哈哈哈
+  </view>
+
+
+  <!--
+  <view class="volume">
+    <view class="category-title">
+      <image class="small-icon-img" src="../../img/volume_small.png"></image>
+      <text class="small-text">最热</text>
+    </view>
+    <image class="ui-width-100" src="../../img/img1.jpg" bindtap=""></image>
+  </view>
+
+  
+  <view class="separate"></view>
+
+  
+  <view class="new">
+    <view class="category-title">
+      <image class="small-icon-img" src="../../img/new_small.png"></image>
+      <text class="small-text">最新</text>
+    </view>
+    <image class="ui-width-100" src="../../img/img1.jpg" bindtap=""></image>
+  </view>
+
+  
+  <view class="separate"></view>
+
+  
+  <view class="hot">
+    <view class="category-title">
+      <image class="small-icon-img" src="../../img/hot_small.png"></image>
+      <text class="small-text">最火</text>
+    </view>
+    <image class="ui-width-100" src="../../img/" bindtap=""></image>
+  </view>-->
+</scroll-view>

@@ -1,0 +1,45 @@
+{
+  "pages": [
+    "pages/index/index",
+    "pages/shopcart/shopcart",
+    "pages/mine/mine",
+    "pages/shopinfo/shopinfo",
+    "pages/address/address",
+    "pages/addresslist/addresslist",
+    "pages/search/search",
+    "pages/searchInfo/searchInfo",
+    "pages/saleInfo/saleInfo",
+    "pages/publish/publish"
+  ],
+  "window": {
+    "backgroundTextStyle": "light",
+    "navigationBarBackgroundColor": "#F8F8F8",
+    "navigationBarTitleText": "乡村集市",
+    "navigationBarTextStyle": "black"
+  },
+  "tabBar": {
+    "selectedColor": "#BF8600",
+    "backgroundColor": "#FFFFFF",
+    "list": [
+      {
+        "pagePath": "pages/index/index",
+        "text": "首页",
+        "iconPath": "img/index.png",
+        "selectedIconPath": "img/index_ed.png"
+      },
+      {
+        "pagePath": "pages/saleInfo/saleInfo",
+        "text": "我要卖",
+        "iconPath": "img/add.png",
+        "selectedIconPath": "img/add.png"
+      },
+      {
+        "pagePath": "pages/mine/mine",
+        "text": "我的",
+        "iconPath": "img/mine.png",
+        "selectedIconPath": "img/mine_ed.png"
+      }
+    ]
+  },
+  "sitemapLocation": "sitemap.json"
+}

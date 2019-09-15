@@ -1,0 +1,265 @@
+/* pages/publish/publish.wxss */
+
+.addImage {
+  width: 165rpx;
+  height: 165rpx;
+}
+
+.addButtonText {
+  font-size: 30rpx;
+  margin-top:15rpx; 
+  margin-bottom: 20rpx;
+  color: rgb(202, 202, 202)
+
+}
+
+.addButton {
+  margin-left: 14rpx;
+  margin-top: 20rpx;
+  width: 165rpx;
+  height: 165rpx;
+  position:relative;
+}
+.addColor{
+  background-color: rgb(230, 230, 230);
+}
+.imageAddHright{
+  height:400rpx;
+}
+
+.showImage {
+  height:200rpx;
+  display:flex;
+  flex-direction: row;
+  flex-wrap:wrap;
+  align-items: center;
+}
+.showImage2 {
+  height:200rpx;
+  display:flex;
+  flex-direction: column;
+  flex-wrap:wrap;
+  align-items: center;
+  margin-bottom: 25rpx;
+}
+.delete {
+  position: absolute;
+  right:0;
+  top:0;
+  background:rgb(75, 75, 75);
+  opacity:1;
+  height: 36rpx;
+  font-size:22rpx;
+  font-weight:700;
+  padding:0 8rpx 0 10rpx;
+  color: rgb(236, 236, 236);
+}
+.addDetail {
+  display:flex;
+  flex-direction: column;
+  justify-content:center;
+  margin-left: 10rpx;
+  margin-right: 10rpx;
+}
+.addDetail-space-between {
+  display:flex;
+  flex-direction: row;
+  justify-content:space-between;
+  margin-bottom: 25rpx;
+  
+}
+.addDetail-align-items{
+  display:flex;
+  flex-direction: row;
+  align-items:center;
+}
+.detailInput{
+  width: 90%;
+  font-size: 30rpx;
+}
+.detailAreaInput{
+  width: 100%;
+  font-size: 30rpx;
+}
+.placeholder-style{
+  font-size: 30rpx;
+}
+.localImage {
+  width: 40rpx;
+  height: 40rpx;
+}
+
+/*  重写 checkbox 样式  */
+/* 未选中的 背景样式 */
+checkbox .wx-checkbox-input{
+   border-radius: 50%;/* 圆角 */
+   width: 40rpx; /* 背景的宽 */
+   height: 40rpx; /* 背景的高 */
+}
+/* 选中后的 背景样式 （红色背景 无边框 可根据UI需求自己修改） */
+checkbox .wx-checkbox-input.wx-checkbox-input-checked{
+   border: none;
+   background: rgb(0, 195, 255);
+}
+/* 选中后的 对勾样式 （白色对勾 可根据UI需求自己修改） */
+checkbox .wx-checkbox-input.wx-checkbox-input-checked::before{
+   border-radius: 50%;/* 圆角 */
+   width: 40rpx;/* 选中后对勾大小，不要超过背景的尺寸 */
+   height: 40rpx;/* 选中后对勾大小，不要超过背景的尺寸 */
+   line-height: 40rpx;
+   text-align: center;
+   font-size:30rpx; /* 对勾大小 30rpx */
+   color:#fff; /* 对勾颜色 白色 */
+   background: transparent;
+   transform:translate(-50%, -50%) scale(1);
+   -webkit-transform:translate(-50%, -50%) scale(1);
+}
+text{
+  font-size: 30rpx;
+}
+.titleCount{
+  font-size: 30rpx;
+  color: rgb(139, 139, 139);
+  
+}
+/*以下是键盘相关样式*/
+page{
+  background: #f3f7f7;
+  height: 100%;
+}
+.page_box{
+  width: 100%;
+  height: 100%;
+  background: #f3f7f7;
+  overflow: hidden;
+}
+.input_view{
+  width: 700rpx;
+  height:500rpx;
+  background: #fff;
+   margin: 25rpx auto; 
+  border-radius: 10rpx;
+  padding: 40rpx;
+  box-sizing: border-box;
+}
+.title{
+  display: block;
+  line-height: 90rpx;
+  font-size:30rpx;
+  color: #aaa;
+}
+.input_box{
+  /* background: #ffc; */
+  display: flex;
+  padding: 20rpx 0;
+  height: 90rpx;
+  border-bottom: 1px solid #efefef;
+}
+.input_box_2{
+  /* background: #ffc; */
+  display: flex;
+  padding: 20rpx 0;
+  height: 45rpx;
+  border-bottom: 1px solid #efefef;
+  flex-direction: row;
+  justify-content:space-between;
+}
+.input_label{
+  font-size: 35rpx;
+  font-weight: bold;
+  margin-right: 5rpx;
+}
+.input_label_2{
+  font-size:30rpx;
+  color: #aaa;
+  margin-right: 5rpx;
+}
+
+.content{
+  font-size: 80rpx;
+  line-height: 90rpx;
+  font-weight: bold;
+}
+.content_2{
+  font-size: 35rpx;
+  line-height: 50rpx;
+}
+.className{ 
+  width: 6rpx;
+  height: 90rpx;
+  background: #666;
+  border-radius: 6rpx;
+  animation: twinkling 1s infinite ; 
+} 
+.className_2{ 
+  width: 6rpx;
+  height: 45rpx;
+  background: #666;
+  border-radius: 6rpx;
+  animation: twinkling 1s infinite ; 
+} 
+.animated{ 
+  animation-duration: 1s; 
+  animation-fill-mode: both 
+} 
+@-webkit-keyframes twinkling{ 
+  0%{ 
+    opacity: 0; 
+  } 
+  100%{ 
+    opacity: 1; 
+  } 
+} 
+.pay{
+  display: block;
+  width: 300rpx;
+  height: 90rpx;
+  border-radius: 12rpx;
+  background: #62b900;
+  color:#fff;
+  text-align: center;
+  line-height: 90rpx;
+  margin:50rpx auto;
+  font-size: 32rpx;
+}
+.keyboard{
+  height: 0;
+  width: 100%;
+  background: #fff;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  transition:height 0.3s;
+}
+.hind_box{
+  height: 1800rpx;
+}
+.complete{
+  background: #efefef;
+  height: 80rpx;
+  font-size: 30rpx;
+  line-height: 80rpx;
+  text-align: right;
+  padding:0 25rpx;
+  color: #0f0;
+}
+.key_box{
+  overflow: hidden;
+}
+.keys{
+  float: left;
+  width: 250rpx;
+  height: 90rpx;
+  text-align: center;
+  line-height: 90rpx;
+  border-left: 1px solid #eee;
+  box-sizing: border-box;
+  border-top: 1px solid #eee;
+}
+.border0{
+  border-left: 0;
+}
+.bg_color{
+  background: #ccc;
+}
+

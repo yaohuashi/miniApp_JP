@@ -1,0 +1,63 @@
+<!--pages/searchInfo/searchInfo.wxml-->
+<view>
+  <view class="search">
+    <icon class="search-image" size='20' type='search'></icon>
+    <input class='search-input' type='text' placeholder='{{placeholder}}' focus='{{focus}}' placeholder-class="left" confirm-type='search' value="{{inputValue}}" bindinput='inputBind' bindconfirm="searchBtn"></input>
+  </view>
+  <!--筛选按钮-->
+  <view class="tabTit box">
+    <view class="flex1{{!tab[index]?' active':''}}" wx:for="{{tabTxt}}" wx:key="type" data-index="{{index}}" bindtap="filterTab">
+      <text>{{item}}</text>
+      <image src="../../img/arrow.png"></image>
+    </view>
+  </view>
+</view>
+<!--筛选项-->
+<view class="tabLayer" hidden="{{tab[0]}}">
+  <text class="{{local_id==0?'active':''}}" data-id="0" data-index="0" data-txt="范围" bindtap="filter">不限</text>
+  <text class="{{local_id==item.id?'active':''}}" wx:for="{{localList}}" wx:key="pp" wx:for-item="item" data-id="{{item.id}}" data-index="0" data-txt="{{item.title}}" bindtap="filter">{{item.title}}</text>
+</view>
+<view class="tabLayer" hidden="{{tab[1]}}">
+  <text class="{{jiage_id==0?'active':''}}" data-id="0" data-index="1" data-txt="价格" bindtap="filter">不限</text>
+  <text class="{{jiage_id==1?'active':''}}" data-id="1" data-index="1" data-txt="0-58元" bindtap="filter">0-58元</text>
+  <text class="{{jiage_id==2?'active':''}}" data-id="2" data-index="1" data-txt="58-88元" bindtap="filter">58-88元</text>
+  <text class="{{jiage_id==3?'active':''}}" data-id="3" data-index="1" data-txt="88-108元" bindtap="filter">88-108元</text>
+  <text class="{{jiage_id==4?'active':''}}" data-id="4" data-index="1" data-txt="108-188元" bindtap="filter">108-188元</text>
+</view>
+<view class="tabLayer" hidden="{{tab[2]}}">
+  <text class="{{other_id==0?'active':''}}" data-id="0" data-index="2" data-txt="其他" bindtap="filter">不限</text>
+  <text class="{{other_id==1?'active':''}}" data-id="1" data-index="2" data-txt="全新" bindtap="filter">全新</text>
+  <text class="{{other_id==2?'active':''}}" data-id="2" data-index="2" data-txt="95新以上" bindtap="filter">95新以上</text>
+  <text class="{{other_id==3?'active':''}}" data-id="3" data-index="2" data-txt="包邮送" bindtap="filter">包邮送</text>
+  <text class="{{other_id==4?'active':''}}" data-id="4" data-index="2" data-txt="自取" bindtap="filter">自取</text>
+  <text class="{{other_id==5?'active':''}}" data-id="5" data-index="2" data-txt="刚刚发布" bindtap="filter">刚刚发布</text>
+  <text class="{{other_id==6?'active':''}}" data-id="6" data-index="2" data-txt="近一天内" bindtap="filter">近一天内</text>
+  <text class="{{other_id==7?'active':''}}" data-id="7" data-index="2" data-txt="一天外发布" bindtap="filter">一天外发布</text>
+</view>
+
+<view class="container">
+
+  <view class='xiangqing' wx:for="{{details}}" bindtap="navigateToShopInfo">
+    <view class='xiangqing_img'>
+      <image src='{{item.img}}'></image>
+    </view>
+    <view class='xiangqing_info'>
+      <text class='title'>{{item.title}}</text>
+      <view class='key'>
+        <text wx:for="{{item.world}}" class='text{{index}}'>{{item.message}}</text>
+      </view>
+      <view class='house'>{{item.local1}} | {{item.local2}}</view>
+      <view class='prix'>
+        <text class='prix1'>￥{{item.prix}}</text>
+        <text class='prix2'>距离您{{item.price}}km</text>
+      </view>
+    </view>
+    <!--<view class='yongjin'>
+      <view class='yongjin_info'>
+        <image src='/images/yong.png' class='yongjin_img'></image>
+        <text class='yongjin_font'>{{item.yongjin}}</text>
+      </view>
+    </view>-->
+  </view>
+
+</view>

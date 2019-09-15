@@ -1,0 +1,29 @@
+<!--pages/serach/search.wxml-->
+<view class="search">
+  <icon class="search-image" size='20' type='search'></icon>
+  <input class='search-input' type='text' placeholder='{{placeholder}}' focus='{{focus}}' placeholder-class="left" confirm-type='search' value="{{inputValue}}" bindinput='inputBind' bindconfirm="searchBtn"></input>
+  <text class='search-text'>取消</text>
+</view>
+<view class='line'></view>
+<view style='margin-bottom: 50rpx;'>
+  <text class='search-button-text'>推荐搜索</text>
+  <view class="search-button-view">
+    <block class="search-button-block" wx:for="{{searchButton}}">
+      <button class="search-button" data-search='{{item}}' bindtap="searchButtonClick">{{item}}</button>
+    </block>
+  </view>
+</view>
+<view class='line'></view>
+<view class='search-history-view'>
+  <text class='search-button-text'>历史搜索</text>
+  <icon class='search-history-icon' bindtap="historyDelFn" type='clear'></icon>
+</view>
+<view class='line'></view>
+<view>
+  <view class="search-history-block" wx:for="{{searchHistory}}" wx:for-item="itemName">
+    <view  data-search='{{itemName.value}}' bindtap="searchButtonClick">
+      <text class='search-history-text'>{{itemName.value}}</text>
+      <view class='line search-line'></view>
+    </view>
+  </view>
+</view>
