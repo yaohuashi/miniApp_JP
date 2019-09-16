@@ -1,4 +1,8 @@
 <!--pages/publish/publish.wxml-->
+<!--导航条-->
+<view class="navbar">
+  <text wx:for="{{navbar}}" data-idx="{{index}}" class="item {{currentTab==index ? 'active' : ''}}" wx:key="unique" bindtap="navbarTap">{{item}}</text>
+</view>
 <view>
   <view class="{{images.length>3 ? 'imageAddHright':''}}">
     <view class="{{images.length>0 ? 'showImage':'showImage2'}}">
@@ -14,8 +18,9 @@
       </view>
     </view>
   </view>
-  <view class="addButtonText" wx:if="{{images.length == 0}}">(最多只能上传8张图片，默认第一张为产品封面展示。)</view>
-  <view class="line-10"></view>
+  <view class="addButtonText" wx:if="{{images.length == 0 && currentTab == 0}}">(最多上传8张图片，默认第一张为产品封面。必须项)</view>
+  <view class="addButtonText" wx:if="{{images.length == 0 && currentTab == 1}}">(最多上传8张图片，默认第一张为产品封面。非必须项)</view>
+  <view class="line-10" ></view>
   <view class="addDetail">
     <view class="addDetail-space-between">
       <input class="detailInput" type="text" maxlength="30" placeholder='填写主题或名称，如:"苹果手机"' placeholder-style="color:#CACACA;" placeholder-class="placeholder-style" value="{{title}}" bindinput="titleInput" hidden="{{keyShow}}"></input>
@@ -23,14 +28,14 @@
     </view>
     <view class="line"></view>
     <view style="margin-top: 25rpx;">
-      <textarea class="detailAreaInput" placeholder="在此描述你的具体需求或物品的细节：如品牌，规格，成色，出手原因，购买渠道，优缺点等" placeholder-style="color:#CACACA;" placeholder-class="placeholder-style" value="" hidden="{{keyShow}}"/>
+      <textarea class="detailAreaInput" placeholder="在此描述你的具体需求或物品的细节：如品牌，规格，成色，出手原因，购买渠道，优缺点等" placeholder-style="color:#CACACA;" placeholder-class="placeholder-style" value="" hidden="{{keyShow}}" />
     </view>
     <view class="addDetail-space-between">
       <view class="addDetail-align-items">
         <image class="localImage" src='../../img/local.png'></image>
         <text>日本·东京</text>
       </view>
-      <view class="addDetail-align-items">
+      <view class="addDetail-align-items" wx:if="{{currentTab == 0}}">
         <checkbox value="{{item.name}}" bindchange="checkboxChange" />
         <text>全新宝贝</text>
       </view>
@@ -42,7 +47,7 @@
     <text style="margin-right: 20rpx;margin-bottom: 10rpx;">手机  ></text>
   </view>
   <view class="line"></view>
-  <view class="addDetail-space-between" catchtap='showKeyboard'>
+  <view class="addDetail-space-between" catchtap='showKeyboard' wx:if="{{currentTab == 0}}">
     <text style="margin-left: 20rpx;margin-bottom: 10rpx;">价格</text>
     <text style="margin-right: 20rpx;margin-bottom: 10rpx;">开价  ></text>
   </view>

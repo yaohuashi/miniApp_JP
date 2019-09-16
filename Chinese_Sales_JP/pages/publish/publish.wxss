@@ -262,4 +262,33 @@ page{
 .bg_color{
   background: #ccc;
 }
+.navbar {
+  flex: none;
+  display: flex;
+  background: rgb(248, 248, 248);
+}
+
+.navbar .item {
+  position: relative;
+  flex: auto;
+  text-align: center;
+  line-height: 80rpx;
+  width: 107rpx;
+}
+
+.navbar .item.active {
+  font-size: 40rpx;
+  font-weight: 5rpx;
+}
+
+.navbar .item.active:after {
+  content: "";
+  display: block;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 4rpx;
+  background: rgb(0, 183, 255);
+}
 

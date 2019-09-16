@@ -15,6 +15,8 @@ Page({
     price: '开价',
     oldprice: '',
     yunfei: '',
+    navbar: ['商品类', '消息类'],
+    currentTab: 0,
 
   },
 
@@ -29,6 +31,14 @@ Page({
     })
   },
 
+  navbarTap: function (e) {
+    this.setData({
+      currentTab: e.currentTarget.dataset.idx,
+      //切换发布分类时清除已经上传的图片
+      images: [],
+      isShow: true
+    })
+  },
   chooseImage(e) {
     const selectNum = this.data.images.length;
     const num = 8 - selectNum;
